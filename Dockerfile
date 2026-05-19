@@ -9,8 +9,8 @@ RUN apt-get update && apt-get install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Install yt-dlp via pip for the most professional, up-to-date engine
-RUN pip3 install --no-cache-dir yt-dlp
+# Install yt-dlp via pip professionally, using the system package break flag for Docker compatibility
+RUN pip3 install --no-cache-dir --break-system-packages yt-dlp
 
 # Set working directory
 WORKDIR /app
