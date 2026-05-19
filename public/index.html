@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#050505">
+    <title>DOAG Link</title>
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="/icons/doag-tab-48.png" sizes="48x48" type="image/png">
+    <link rel="icon" href="/icons/doag-tab-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/icons/doag-tab-16.png" sizes="16x16" type="image/png">
+    <link rel="apple-touch-icon" href="/icons/doag-icon-180.png">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="mark" aria-hidden="true">
+            <img src="/icons/doag-icon-original.jpeg" alt="D">
+          </div>
+          <div>
+            <h1>DOAG Link</h1>
+            <p>Convert links to high-quality audio</p>
+          </div>
+        </div>
+
+        <div class="top-actions">
+          <a class="library-link" href="/library/">My Library</a>
+        </div>
+      </header>
+
+      <main>
+        <div class="mode-tabs" aria-label="Mode">
+          <div class="tab-mirror-bar" id="tabMirror"></div>
+          <button class="tab active" data-tab="single">Single Link</button>
+          <button class="tab" data-tab="multi">Batch Mode</button>
+        </div>
+
+        <section class="panel active" id="singlePanel">
+          <form class="link-console" id="singleForm">
+            <input id="singleUrl" name="singleUrl" type="url" inputmode="url" autocomplete="off" placeholder="Paste link here..." required>
+            <div class="format-row" role="radiogroup" aria-label="Audio format">
+              <label><input type="radio" name="singleFormat" value="mp3" checked> <span>MP3</span></label>
+              <label><input type="radio" name="singleFormat" value="wav"> <span>WAV</span></label>
+            </div>
+          </form>
+
+          <article class="preview-card empty" id="singlePreview">
+            <div class="empty-state">
+              <div class="status-chip">Ready</div>
+              <h2>Ready for your link</h2>
+              <p>Paste a link above. I'll automatically fetch the details and clear the input for a faster experience.</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel" id="multiPanel">
+          <form class="link-console" id="multiForm">
+            <input id="multiUrl" type="url" inputmode="url" autocomplete="off" placeholder="Paste link here...">
+            <div class="format-row">
+              <label><input type="radio" name="queueFormat" value="mp3" checked> <span>MP3 (Max 100)</span></label>
+              <label><input type="radio" name="queueFormat" value="wav"> <span>WAV (Max 50)</span></label>
+            </div>
+          </form>
+
+          <section class="queue-panel simple">
+            <div class="queue-heading">
+              <h2>Queue</h2>
+              <span id="queueCount">0 / 0</span>
+            </div>
+            <div class="queue-list" id="queueList"></div>
+            <button class="primary-button" id="downloadQueueButton" type="button" disabled>Process all links</button>
+          </section>
+        </section>
+      </main>
+
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </div>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>

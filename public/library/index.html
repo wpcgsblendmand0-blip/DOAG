@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
+  <meta name="theme-color" content="#050505" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  />
+  <meta name="apple-mobile-web-app-title" content="DOAG Library" />
+
+  <title>DOAG Audio Library</title>
+
+  <link rel="manifest" href="/library/manifest.webmanifest" />
+  <link rel="icon" href="/icons/doag-tab-48.png" sizes="48x48" type="image/png" />
+  <link rel="icon" href="/icons/doag-tab-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="/icons/doag-tab-16.png" sizes="16x16" type="image/png" />
+  <link rel="apple-touch-icon" href="/icons/doag-icon-180.png" />
+
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/library/library.css" />
+</head>
+<body>
+  <!-- Splash Screen -->
+  <div class="library-splash" id="librarySplash">
+    <div class="splash-logo">
+      <img src="/icons/doag-icon-180.png" alt="DOAG Library" />
+    </div>
+    <h2>DOAG Library</h2>
+    <p>Loading your offline audio collection...</p>
+  </div>
+
+  <!-- Main App Shell -->
+  <div class="app-shell library-shell">
+    <!-- Top Bar -->
+    <header class="topbar library-topbar">
+      <div class="brand">
+        <div class="mark">
+          <img src="/icons/doag-icon-original.jpeg" alt="D">
+        </div>
+        <div class="brand-copy">
+          <h1>My Library</h1>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <!-- Back to DOAG Link -->
+        <a class="library-link" href="/">DOAG Link</a>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="library-main">
+      <!-- Player Section (Industrial Wave) -->
+      <section class="player-container" id="playerContainer" style="display: none;">
+        <div class="player-header">
+           <div class="player-thumb" id="playerArt"></div>
+           <div class="player-info">
+             <h2 id="trackTitle">Song Title</h2>
+             <p id="trackMeta">Artist / 0:00</p>
+           </div>
+           <button class="play-btn" id="playPauseButton">▶</button>
+        </div>
+        
+        <div class="wave-box">
+          <canvas id="waveCanvas" width="1000" height="100"></canvas>
+          <div class="time-info">
+            <span id="currentTime">0:00</span>
+            <div class="volume-control">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>
+              <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1">
+            </div>
+            <span id="durationTime">0:00</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Search -->
+      <section class="search-strip">
+        <input id="searchInput" type="search" placeholder="Search saved songs..." autocomplete="off" />
+      </section>
+
+      <!-- Track List -->
+      <section class="track-list" id="trackList"></section>
+    </main>
+
+    <!-- Native Audio -->
+    <audio id="audioPlayer" preload="metadata"></audio>
+
+    <!-- Toast -->
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+
+    <!-- Toast -->
+    <div
+      class="toast"
+      id="toast"
+      role="status"
+      aria-live="polite"
+    ></div>
+  </div>
+
+  <script src="/library/library.js" defer></script>
+</body>
+</html>
