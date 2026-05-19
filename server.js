@@ -158,7 +158,6 @@ async function getMetadata(url) {
     "--no-playlist",
     "--no-warnings",
     "--skip-download",
-    "--js-runtimes", "node",
     url
   ]);
   const data = JSON.parse(stdout);
@@ -192,7 +191,6 @@ async function convertMedia(url, format) {
   const args = [
     "--ignore-config",
     "--no-playlist",
-    "--js-runtimes", "node",
     "-f",
     "bestaudio/best",
     "-x",
