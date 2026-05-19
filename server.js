@@ -11,7 +11,12 @@ const ROOT = __dirname;
 const PUBLIC_DIR = path.join(ROOT, "public");
 const TEMP_DIR = path.join(ROOT, "temp");
 const LIBRARY_FOLDER_NAME = "DOAG_library01079854000989";
-const DOWNLOADS_DIR = path.join(os.homedir(), "Downloads");
+
+// Professional cross-platform path handling for cloud deployment
+const DOWNLOADS_DIR = (process.platform === 'win32') 
+  ? path.join(os.homedir(), "Downloads")
+  : os.homedir(); 
+
 const LIBRARY_DIR = path.join(DOWNLOADS_DIR, LIBRARY_FOLDER_NAME);
 const MAX_BODY_SIZE = 1024 * 1024;
 const MAX_URL_LENGTH = 4096;

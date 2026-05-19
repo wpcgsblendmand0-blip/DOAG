@@ -1,7 +1,7 @@
-# Use Node.js base image
-FROM node:18-slim
+# Use highly compatible Node.js LTS image
+FROM node:18-bullseye-slim
 
-# Install system dependencies
+# Install system essentials professionally
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
@@ -9,24 +9,25 @@ RUN apt-get update && apt-get install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Install yt-dlp professionally via pip
-RUN pip3 install yt-dlp
+# Install yt-dlp via pip for the most professional, up-to-date engine
+RUN pip3 install --no-cache-dir yt-dlp
 
-# Create app directory
+# Set working directory
 WORKDIR /app
 
-# Copy package files and install production dependencies
+# Install app dependencies
 COPY package*.json ./
 RUN npm install --production
 
-# Copy the rest of the application
+# Copy remaining source code (respects .dockerignore)
 COPY . .
 
-# Create necessary folders for production logic
-RUN mkdir -p temp 
+# Ensure required directories exist with correct permissions
+RUN mkdir -p temp && chmod 777 temp
 
-# Expose the port Railway provides
-EXPOSE 4173
+# Professional Port handling for Railway
+ENV PORT=4173
+EXPOSE ${PORT}
 
-# Start the server
-CMD ["npm", "start"]
+# Run the server
+CMD ["node", "server.js"]
