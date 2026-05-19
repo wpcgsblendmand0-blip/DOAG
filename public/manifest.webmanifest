@@ -1,0 +1,20 @@
+{
+  "name": "DOAG Link",
+  "short_name": "DOAG Link",
+  "description": "Professional Link to Audio Converter",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#050505",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "/icons/doag-icon-72.png", "sizes": "72x72", "type": "image/png" },
+    { "src": "/icons/doag-icon-96.png", "sizes": "96x96", "type": "image/png" },
+    { "src": "/icons/doag-icon-128.png", "sizes": "128x128", "type": "image/png" },
+    { "src": "/icons/doag-icon-144.png", "sizes": "144x144", "type": "image/png" },
+    { "src": "/icons/doag-icon-152.png", "sizes": "152x152", "type": "image/png" },
+    { "src": "/icons/doag-icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/doag-icon-384.png", "sizes": "384x384", "type": "image/png" },
+    { "src": "/icons/doag-icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

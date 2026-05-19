@@ -11,6 +11,11 @@
     <link rel="icon" href="/icons/doag-tab-16.png" sizes="16x16" type="image/png">
     <link rel="apple-touch-icon" href="/icons/doag-icon-180.png">
     <link rel="stylesheet" href="/styles.css">
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js');
+      }
+    </script>
   </head>
   <body>
     <div class="app-shell">
