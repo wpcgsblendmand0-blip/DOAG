@@ -11,6 +11,7 @@ const ROOT = __dirname;
 const PUBLIC_DIR = path.join(ROOT, "public");
 const TEMP_DIR = path.join(ROOT, "temp");
 const LIBRARY_FOLDER_NAME = "DOAG_library01079854000989";
+const COOKIES_PATH = path.join(ROOT, "cookies.txt");
 
 // Professional cross-platform path handling for cloud deployment
 const DOWNLOADS_DIR = (process.platform === 'win32') 
@@ -152,14 +153,20 @@ function runProcess(command, args, options = {}) {
 }
 
 async function getMetadata(url) {
-  const { stdout } = await runProcess("yt-dlp", [
+  const args = [
     "--ignore-config",
     "--dump-single-json",
     "--no-playlist",
     "--no-warnings",
     "--skip-download",
     url
-  ]);
+  ];
+
+  if (fs.existsSync(COOKIES_PATH)) {
+    args.splice(1, 0, "--cookies", COOKIES_PATH);
+  }
+
+  const { stdout } = await runProcess("yt-dlp", args);
   const data = JSON.parse(stdout);
   return {
     id: data.id || crypto.randomUUID(),
@@ -200,6 +207,11 @@ async function convertMedia(url, format) {
     outputTemplate,
     url
   ];
+
+  if (fs.existsSync(COOKIES_PATH)) {
+    args.splice(1, 0, "--cookies", COOKIES_PATH);
+  }
+
   const outputIndex = args.indexOf("-o");
 
   if (format === "mp3") {
