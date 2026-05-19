@@ -1,0 +1,10 @@
+node_modules
+.git
+.github
+dist
+build
+electron
+*.exe
+*.dll
+*.spec
+temp/*
