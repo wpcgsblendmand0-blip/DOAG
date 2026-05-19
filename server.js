@@ -155,6 +155,11 @@ function runProcess(command, args, options = {}) {
 async function getMetadata(url) {
   const args = [
     "--ignore-config",
+    "--no-check-certificates",
+    "--geo-bypass",
+    "--force-ipv4",
+    "--user-agent", "Mozilla/5.0",
+    "--retries", "10",
     "--dump-single-json",
     "--no-playlist",
     "--no-warnings",
@@ -197,9 +202,13 @@ async function convertMedia(url, format) {
   const outputTemplate = path.join(jobDir, `${baseName}.%(ext)s`);
   const args = [
     "--ignore-config",
+    "--no-check-certificates",
+    "--geo-bypass",
+    "--force-ipv4",
+    "--user-agent", "Mozilla/5.0",
+    "--retries", "10",
     "--no-playlist",
-    "-f",
-    "bestaudio/best",
+    "-f", "bestaudio[ext=m4a]/bestaudio/best",
     "-x",
     "--audio-format",
     format,
